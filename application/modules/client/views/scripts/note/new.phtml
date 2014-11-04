@@ -1,5 +1,8 @@
 <?php 
 $this->headScript()->prependFile($this->baseUrl('/js/note/new.js'));
+$this->headScript()->appendFile($this->baseUrl().'/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');
+$this->headScript()->appendFile($this->baseUrl().'/library/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js');
+$this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css');
 ?>
         <div class="row">
             <div class="col-md-offset-1 col-md-11">
@@ -40,6 +43,18 @@ $this->headScript()->prependFile($this->baseUrl('/js/note/new.js'));
                                     <textarea rows="7" cols="60" id="comment" name="comment" placeholder="Comentarios" class="form-control" style="resize: none; border:1px solid #00B7DF;"></textarea>
                                 </div>
                     </div>
+                    
+                    <div class="form-group">
+                    <label for="deliveryDate" class="col-md-2 control-label"><span class="required">*</span>Fecha de evento:</label>
+    
+                      <div class="col-md-3">
+                      	<div id="datePicker" class="input-group date" data-date-format="dd/MM/yyyy hh:mm:ss" data-link-field="dateField">
+                      		<input readonly="readonly" id="deliveryDateVisible" name="deliveryDateVisible" type="text" class="form-control" placeholder="Fecha"/>
+                      		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                      	</div>
+                      	<input type="hidden" id="dateField" name="dateField"/>
+                      </div>
+                      </div>
                     <br> 
         
                     <div class="form-group">

@@ -11,7 +11,8 @@ class Client_NoteController extends Zend_Controller_Action {
     }
     
 	public function newAction(){
-	  
+	    $data = $this->getRequest()->getParams();
+	    //print_r($data);
 	}
 
 }

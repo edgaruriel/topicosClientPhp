@@ -17,5 +17,17 @@
  		    	form.submit(); 		    
  		    } 
  		 });
+ 		 
+ 		$('#datePicker').datetimepicker({
+ 			startDate: new Date(),
+ 			language: 'es',
+ 			pickDate: true,
+ 			format: 'dd/MM/yyyy',
+ 			autoclose: true,
+ 			startView: 2,
+ 			minView: 2
+ 		});
+ 		
+ 		$('#datePicker').datetimepicker('setDate',new Date());
   		
   	});

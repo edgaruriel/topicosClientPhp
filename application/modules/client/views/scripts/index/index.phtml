@@ -1,5 +1,21 @@
 <?php 
  $this->headLink()->appendStylesheet($this->baseUrl('/css/index/index.css'));
+ 
+function formatDate($date){
+        $m_names = Array("Enero", "Febrero", "Marzo",
+        		"Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+        		"Octubre", "Noviembre", "Diciembre");
+        $dateAux = explode(" ", $date);
+        list($year, $month, $day) = explode("-", $dateAux[0]);
+        $firstNumber = substr($month, 0, 1);
+        $dateReturn = null;
+        if($firstNumber == 0){
+        	$dateReturn = $day."/".$m_names[substr($month, 1, 2)-1]."/".$year;
+        }else{
+        	$dateReturn = $day."/".$m_names[$month -1]."/".$year;
+        }
+    	return $dateReturn;
+    }
  ?>
 <div class="container">
 		<div class="row">
@@ -10,6 +26,7 @@
 						<div class="[ info-card-header ]">
 							<h1> Nota 1 </h1>
 							<h3> Trabajo </h3>
+							<h4><?php echo formatDate(Date(("Y-m-d H:i:s")));?></h4>
 						</div>
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
@@ -25,6 +42,7 @@
 						<div class="[ info-card-header ]">
 							<h1> Nota 2 </h1>
 							<h3> Escuela </h3>
+							<h4><?php echo formatDate(Date(("Y-m-d H:i:s")));?></h4>
 						</div>
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
@@ -47,6 +65,7 @@
 						<div class="[ info-card-header ]">
 							<h1> Nota 3 </h1>
 							<h3> Trabajo </h3>
+							<h4><?php echo formatDate(Date(("Y-m-d H:i:s")));?></h4>
 						</div>
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
@@ -62,6 +81,7 @@
 						<div class="[ info-card-header ]">
 							<h1> Nota 4 </h1>
 							<h3> Escuela </h3>
+							<h4><?php echo formatDate(Date(("Y-m-d H:i:s")));?></h4>
 						</div>
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
@@ -77,6 +97,7 @@
 						<div class="[ info-card-header ]">
 							<h1> Nota 5 </h1>
 							<h3> Trabajo </h3>
+							<h4><?php echo formatDate(Date(("Y-m-d H:i:s")));?></h4>
 						</div>
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
@@ -92,6 +113,7 @@
 						<div class="[ info-card-header ]">
 							<h1> Nota 6 </h1>
 							<h3> Escuela </h3>
+							<h4><?php echo formatDate(Date(("Y-m-d H:i:s")));?></h4>
 						</div>
 						<div class="[ info-card-detail ]">
 							<!-- Description -->

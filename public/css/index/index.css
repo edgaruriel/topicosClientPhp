@@ -81,6 +81,12 @@
 		font-weight: 400;
 		margin-top: 5px;
 	}
+.info-card .info-card-details .info-card-header h4 {
+		color: rgb(0, 0, 51);
+		font-size: 15px;
+		font-weight: 400;
+		margin-top: 5px;
+	}
 	.info-card .info-card-details .info-card-detail .social {
 		list-style: none;
 		padding: 0px;

@@ -1,4 +1,6 @@
-
+<?php 
+$this->headScript()->prependFile($this->baseUrl('/js/note/new.js'));
+?>
         <div class="row">
             <div class="col-md-offset-1 col-md-11">
                 <h1>Agregar recordatorio</h1>
@@ -6,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form id="form" action="#" method="post" class="form-horizontal" role="form">
+                <form id="form" action="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'new'));?>" method="post" class="form-horizontal" role="form">
                 
                     <div class="form-group">
                       <label for="name" class="col-md-2 control-label">Titulo:</label>

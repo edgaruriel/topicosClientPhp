@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <?php 
-  $this->headScript()->prependFile($this->baseUrl().'/library/jqueryValidation/jquery-validation.js');
-    $this->headScript()->prependFile($this->baseUrl().'/library/bootstrap.3.1.1/js/bootstrap.js');
-    $this->headScript()->prependFile($this->baseUrl().'/library/jquery/jquery-1.8.2.min.js');
+  $this->headScript()->prependFile($this->baseUrl('/library/jqueryValidation/jquery-validation.js'));
+    $this->headScript()->prependFile($this->baseUrl('/library/bootstrap.3.1.1/js/bootstrap.js'));
+    $this->headScript()->prependFile($this->baseUrl('/library/jquery/jquery-1.8.2.min.js'));
  
-    $this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap.3.1.1/css/bootstrap.css');
-    $this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-custom/main.css');
-    $this->headLink()->appendStylesheet($this->baseUrl().'/library/font-awesome-4.2.0/css/font-awesome.css');
+    $this->headLink()->appendStylesheet($this->baseUrl('/library/bootstrap.3.1.1/css/bootstrap.css'));
+    //$this->headLink()->appendStylesheet($this->baseUrl('/library/bootstrap-custom/main.css'));
+    $this->headLink()->appendStylesheet($this->baseUrl('/library/font-awesome-4.1.0/css/font-awesome.css'));
     echo $this->headLink();
     echo $this->headScript();
     ?>
@@ -43,6 +43,11 @@
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
+            <li>
+                    <a>
+                        <?php echo '<i class="fa fa-1x fa-user" style="color: white;"></i>&nbsp;<b>Bienvenido: Eddie</b> ';?>
+                    </a>
+             </li>
             <li><a href="<?php echo $this->url(array('module' => 'default','controller' => 'login', 'action' => 'logout'), null, true);?>"><i class="glyphicon glyphicon-lock"></i> Salir</a></li>
           </ul>
         </div>

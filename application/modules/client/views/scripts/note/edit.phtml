@@ -1,0 +1,76 @@
+<?php 
+$this->headScript()->prependFile($this->baseUrl('/js/note/edit.js'));
+$this->headScript()->appendFile($this->baseUrl().'/library/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');
+$this->headScript()->appendFile($this->baseUrl().'/library/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js');
+$this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css');
+?>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+                <h1>Editar recordatorio</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="form" action="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" method="post" class="form-horizontal" role="form">
+                
+                    <div class="form-group">
+                      <label for="name" class="col-md-2 control-label">Titulo:</label>
+                      <div class="col-md-3">
+                        <input type="text" id="title" name="title" class="form-control" placeholder="Titulo" value="<?php echo $this->note->getTitle();?>"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="type" class="col-md-2 control-label"><span class="required">*</span> Tipo Nota:</label>
+                                <div class="col-md-3">
+                                    <select class="form-control" id="id_type" name="id_type" data-size="10" >
+                                    <option value="">Tipo</option>
+                                    </select>
+                                </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="priority" class="col-md-2 control-label"><span class="required">*</span> Prioridad:</label>
+                                <div class="col-md-3">
+                                    <select class="form-control" id="id_priority" name="id_priority" data-size="10" >
+                                    <option value="">Prioridad</option>
+                                    </select>
+                                </div>
+                    </div>
+                    
+                    <div class="form-group">
+                       <label for="priority" class="col-md-2 control-label"><span class="required">*</span> Comentarios:</label>
+                                <div class="col-md-3">
+                                    <textarea rows="7" cols="60" id="comment" name="comment" placeholder="Comentarios" class="form-control" style="resize: none; border:1px solid #00B7DF;"><?php echo $this->note->getComment();?></textarea>
+                                </div>
+                    </div>
+                    
+                    <div class="form-group">
+                    <label for="deliveryDate" class="col-md-2 control-label"><span class="required">*</span>Fecha de evento:</label>
+    
+                      <div class="col-md-3">
+                      	<div id="datePicker" class="input-group date" data-date-format="dd/MM/yyyy hh:mm:ss" data-link-field="dateField">
+                      		<input readonly="readonly" id="deliveryDateVisible" name="deliveryDateVisible" type="text" class="form-control" placeholder="Fecha"/>
+                      		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                      	</div>
+                      	<input type="hidden" id="dateField" name="dateField"/>
+                      </div>
+                      </div>
+                    <br> 
+                    
+                    <input type="hidden" id="idNote" name="idNote" value="<?php echo $this->note->getId();?>"/>
+                    <input type="hidden" id="date" name="date" value="<?php echo $this->note->getDate();?>"/>
+        
+                    <div class="form-group">
+                    <div class="col-md-offset-1 col-md-3">
+                        <input type="submit" value="Aceptar" class="btn btn-primary pull-right" />
+                        <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'index', 'action' => 'index'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Cancelar</a>
+                    </div>
+                  </div>
+                    
+                </form>
+            </div>
+        </div>
+
+
+
+

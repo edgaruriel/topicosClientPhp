@@ -2,7 +2,7 @@
 
 class Application_Model_Client extends Application_Model_Abstract
 {
-    public $id;
+    public $id = 0;
     public $name;
     public $lastName;
     public $email;

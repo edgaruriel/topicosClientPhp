@@ -2,10 +2,10 @@
 
 class Application_Model_User extends Application_Model_Abstract
 {
-    public $id;
-    public $userName;
+    public $id = 0;
     public $password;
     public $typeUser;
+    public $userName;
 	/**
 	 * @return the $id
 	 */

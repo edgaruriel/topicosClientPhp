@@ -2,9 +2,10 @@
 
 class Application_Model_TypeUser extends Application_Model_Abstract
 {
-    public $id;
+    public $id = 0;
     public $name;
     public static $typeUserArray = array("ADMIN"=>1,"CLIENT"=>2);
+    public static $typeUserNameArray = array("ADMIN"=>'admin',"CLIENT"=>'client');
 
 
 	/**

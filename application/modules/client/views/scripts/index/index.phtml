@@ -1,5 +1,6 @@
 <?php 
  $this->headLink()->appendStylesheet($this->baseUrl('/css/index/index.css'));
+ $this->headScript()->prependFile($this->baseUrl('/js/index/index.js'));
  
 function formatDate($date){
         $m_names = Array("Enero", "Febrero", "Marzo",
@@ -31,7 +32,7 @@ function formatDate($date){
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
 							<p>The idea of creating something out of nothing has always generated a passion in my heart. This is what lead me to website development. I can literally create little worlds that hopefully thousands of people can see and even experience.</p>
-						      <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'delete'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
+						      <a onclick="confirmDeleteNote(1,'Nota 1')" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
 						      <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
 						</div>
 					</div>
@@ -56,7 +57,7 @@ function formatDate($date){
 							This empowers us to find beauty in places where others have not dared to look including inside ourselves. People often say that beauty is in the eye of the beholder, and I say that the most liberating thing about beauty is realizing that you are the beholder. 
 							This empowers us to find beauty in places where others have not dared to look including inside ourselves. People often say that beauty is in the eye of the beholder, and I say that the most liberating thing about beauty is realizing that you are the beholder. 
 							This empowers us to find beauty in places where others have not dared to look including inside ourselves.</p>
-						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'delete'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
+						     <a onclick="confirmDeleteNote(2,'Nota 2')" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
 						      <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
 						</div>
 					</div>
@@ -74,7 +75,7 @@ function formatDate($date){
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
 							<p>People often say that beauty is in the eye of the beholder, and I say that the most liberating thing about beauty is realizing that you are the beholder. This empowers us to find beauty in places where others have not dared to look including inside ourselves.</p>
-						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'delete'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
+						    <a onclick="confirmDeleteNote(3,'Nota 3')" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
 						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
 						</div>
 					</div>
@@ -92,7 +93,7 @@ function formatDate($date){
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
 							<p>People often say that beauty is in the eye of the beholder, and I say that the most liberating thing about beauty is realizing that you are the beholder. This empowers us to find beauty in places where others have not dared to look including inside ourselves.</p>
-						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'delete'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
+						    <a onclick="confirmDeleteNote(4,'Nota 4')" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
 						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
 						</div>
 					</div>
@@ -110,7 +111,7 @@ function formatDate($date){
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
 							<p>People often say that beauty is in the eye of the beholder, and I say that the most liberating thing about beauty is realizing that you are the beholder. This empowers us to find beauty in places where others have not dared to look including inside ourselves.</p>
-						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'delete'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
+						    <a onclick="confirmDeleteNote(5,'Nota 5')" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
 						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
 						</div>
 					</div>
@@ -128,11 +129,29 @@ function formatDate($date){
 						<div class="[ info-card-detail ]">
 							<!-- Description -->
 							<p>People often say that beauty is in the eye of the beholder, and I say that the most liberating thing about beauty is realizing that you are the beholder. This empowers us to find beauty in places where others have not dared to look including inside ourselves.</p>
-						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'delete'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
-						    <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
+                            <a onclick="confirmDeleteNote(6,'Nota 6')" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
+							<a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit'));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	    <div id="dialog-delete" class="modal fade">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">Eliminar Nota</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>&iquest;Esta seguro que desea eliminar la nota <b id="nameNote"></b>?</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	        <button type="button" onclick="deleteNote()" class="btn btn-primary">Aceptar</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->

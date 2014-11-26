@@ -22,11 +22,11 @@ $('#form').validate({
 		username: "Porfavor ingrese su nombre de usuario",
 		email: {
 			required: "Porfavor ingrese un email",
-			email: "Ingrese un email válido"
+			email: "Ingrese un email v&aacute;lido"
 		},
-		newpassword: "Porfavor ingrese la nueva contraseña",
+		newpassword: "Porfavor ingrese la nueva contrase&ntilde;a",
 		confirmpassword:{
-			equalTo: 'No coincide la nueva contraseña'
+			equalTo: 'No coincide la nueva contrase&ntilde;a'
 		}
 	},
 	

@@ -1,0 +1,91 @@
+<?php
+	$this->headScript()->appendFile($this->baseUrl().'/library/bootstrap-multiselect/js/bootstrap-multiselect.js');
+	$this->headScript()->appendFile($this->baseUrl().'/library/bootstrap-multiselect/js/prettify.js');
+	
+	$this->headScript()->appendFile($this->baseUrl().'/library/jqueryValidation/jquery-validation.js');
+	
+	$this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-multiselect/css/bootstrap-multiselect.css');
+	$this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-multiselect/css/prettify.css');
+
+	$this->headLink()->appendStylesheet($this->baseUrl().'/css/default/required.css');
+	$this->headScript()->appendFile($this->baseUrl().'/js/client/editProfile.js');
+	$flag = false;
+?>
+<div class="row">
+    <div class="col-md-12">
+        <h1><i class="fa fa-user"></i>&nbsp;EDITAR PERFIL</h1>
+        <hr/>
+    </div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<form id="form" action="<?php echo $this->url(array('module'=>'client', 'controller' => 'index', 'action' => 'profile'));?>" method="post" class="form-horizontal" role="form">
+			<div class="form-group">
+              <label for="name" class="col-md-2 control-label"><span class="required">*</span>Nombre:</label>
+              <div class="col-md-3">
+                <input type="text" id="name" name="name" class="form-control :required" placeholder="Nombre" value="<?php echo $this->client->getName();?>"/>
+              </div>
+            </div>
+            
+		    <div class="form-group">
+		    	<label for="lastName" class="col-md-2 control-label"><span class="required">*</span>Apellido:</label>
+		    	<div class="col-md-3">
+		    		<input type="text" id="lastName" name="lastName" class="form-control :required" placeholder="Apellido" value="<?php echo $this->client->getLastName();?>"/>
+		    	</div>
+		    </div>
+		    
+		    <div class="form-group">
+		    	<label for="email" class="col-md-2 control-label"><span class="required">*</span>Email:</label>
+		    	<div class="col-md-3">
+		    		<input type="text" id="email" name="email" class="form-control :required" placeholder="Email" value="<?php echo $this->client->getEmail();?>"/>
+		    	</div>
+		    </div>
+		    
+		    <div class="form-group">
+		    	<label for="username" class="col-md-2 control-label"><span class="required">*</span>Nombre de usuario:</label>
+		    	<div class="col-md-3">
+		    		<input type="text" id="username" name="username" class="form-control :required" placeholder="Nombre de usuario" value="<?php echo $this->client->getUser()->getUsername();?>"/>
+		    	</div>
+		    	
+		    	<div id="errorName" class="col-md-3" style="display: none;">
+                    <label class="required"> El nombre de usuario ya existe</label>
+                </div>
+		    </div>
+
+		   <input type="hidden" id="id_client" name="id_client" value="<?php echo $this->client->getId();?>"/>
+		   <input type="hidden" id="id_user" name="id_user" value="<?php echo $this->client->getUser()->getId();?>"/>
+             
+             <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="changePass" name="changePass" onchange="optionPassword()"> Cambiar contrase&ntilde;a
+                    </label>
+                  </div>
+                </div>
+              </div>
+             
+             <div id="changePassword" style="display: none;">
+                  <div class="form-group">
+                    <label for="newpassword" class="col-md-2 control-label"><label class="required">*</label>Nueva Contrase&ntilde;a:</label>
+                    <div class="col-md-3">
+                    <input type="password" id="newpassword" name="newpassword" class="form-control :required"  placeholder="Nueva contraseña"/>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                     <label for="confpassword" class="col-md-2 control-label"><label class="required">*</label>Confirmar nueva contrase&ntilde;a:</label>
+                     <div class="col-md-3">
+                     <input type="password" id="confirmpassword" name="confirmpassword" class="form-control :same_as;newpassword :required"  placeholder="Confirmar Contraseña"/>
+                     </div>
+                    </div>
+             </div>
+		    
+		    <div class="form-group">
+		    	<div class="col-md-5">
+		    		<a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'index', 'action' => 'index')); ?>" class="btn btn-default pull-right">Cancelar</a>
+		    		<input type="submit" value="Actualizar" class="btn btn-primary pull-right" style="margin-right: 10px;"/>
+		    	</div>
+		    </div>
+		</form>
+	</div>
+</div>

@@ -19,6 +19,20 @@ class Application_Service_Client {
         $user->setTypeUser($typeUser);
         
         $client->setUser($user);
+        
+        return $client;
+    }
+    
+    public function updateClient(Application_Model_Client $client){
+    
+    	$cliente = new nusoap_client(Application_Service_Client::$WSDL, true);
+    	$result = $cliente->call("updateClient", array("client"=>$client));
+    
+    	if($result['updateClientReturn'] != null){
+    		return true;
+    	}else{
+    		return false;
+    	}
     }
     
 }

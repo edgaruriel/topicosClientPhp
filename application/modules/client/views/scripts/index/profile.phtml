@@ -9,7 +9,6 @@
 
 	$this->headLink()->appendStylesheet($this->baseUrl().'/css/default/required.css');
 	$this->headScript()->appendFile($this->baseUrl().'/js/profile/editProfile.js');
-	$flag = false;
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -44,7 +43,7 @@
 		    <div class="form-group">
 		    	<label for="username" class="col-md-2 control-label"><span class="required">*</span>Nombre de usuario:</label>
 		    	<div class="col-md-3">
-		    		<input type="text" id="username" name="username" class="form-control :required" placeholder="Nombre de usuario" value="<?php echo $this->client->getUser()->getUsername();?>"/>
+		    		<input type="text" id="userName" name="userName" class="form-control :required" placeholder="Nombre de usuario" value="<?php echo $this->client->getUser()->getUsername();?>"/>
 		    	</div>
 		    	
 		    	<div id="errorName" class="col-md-3" style="display: none;">

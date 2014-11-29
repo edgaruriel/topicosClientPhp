@@ -5,7 +5,7 @@ $('#form').validate({
 	rules:{
 		name: "required",
 		lastName: "required",
-		username: "required",
+		userName: "required",
 		email: {
 			required: true,
 			email: true
@@ -19,7 +19,7 @@ $('#form').validate({
 	messages:{
 		name: "Porfavor ingrese su nombre",
 		lastName: "Porfavor ingrese su apellido",
-		username: "Porfavor ingrese su nombre de usuario",
+		userName: "Porfavor ingrese su nombre de usuario",
 		email: {
 			required: "Porfavor ingrese un email",
 			email: "Ingrese un email v&aacute;lido"

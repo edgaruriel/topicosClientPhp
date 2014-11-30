@@ -65,7 +65,7 @@ $this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-datetim
                       		<input readonly="readonly" id="deliveryDateVisible" name="deliveryDateVisible" type="text" class="form-control" placeholder="Fecha"/>
                       		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                       	</div>
-                      	<input type="hidden" id="dateField" name="dateField"/>
+                      	<input type="hidden" id="dateField" name="dateField" value="<?php echo $this->note->getDate(); ?>"/>
                       </div>
                       </div>
                     <br> 

@@ -4,13 +4,13 @@
  		        'title': 'required',	        
  		        'id_type': 'required',
  		        'id_priority': 'required',
- 		        'comment': 'required'
+ 		        'note': 'required'
  		        },
  		    messages: {
  		    	'title': 'Campo obligatorio',	        
  		        'id_type': 'Campo obligatorio',
  		        'id_priority': 'Campo obligatorio',
- 		        'comment': 'Campo obligatorio'
+ 		        'note': 'Campo obligatorio'
  		    },
  		    debug: true,
  		    submitHandler: function(form){
@@ -28,6 +28,6 @@
  			minView: 2
  		});
  		
- 		$('#datePicker').datetimepicker('setDate',new Date());
+ 		$('#datePicker').datetimepicker("update", $("#dateField").val());
   		
   	});

@@ -5,7 +5,7 @@ class Application_Model_TypeNote extends Application_Model_Abstract
     public $id;
     public $name;
     public static $typeNoteArray = array("ACADEMICA"=>1,"TRABAJO"=>2,"OTRO"=>3);
-
+    public static $typeNoteNameArray = array("ACADEMICA"=>Academica,"TRABAJO"=>Trabajo,"OTRO"=>Otro);
 
 	/**
 	 * @return the $name

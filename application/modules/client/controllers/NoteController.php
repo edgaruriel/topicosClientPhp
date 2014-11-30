@@ -24,16 +24,16 @@ class Client_NoteController extends Zend_Controller_Action {
 	       $typeNote->setId($data["id_type"]);
 	       $typeNote->setName("");
 	        
-	       $typePriority = new Application_Model_TypePriority();
+	       $typePriority = new Application_Model_Priority();
 	       $typePriority->setId($data["id_priority"]);
 	       $typePriority->setName("");
 	        
 	       $note->setTypeNote($typeNote);
-	       $note->setTypePriority($typePriority);
+	       $note->setPriority($typePriority);
 	       //print_r($note);
 	       
 	       if($serviceNote->createNote($note)){
-	           $this->_helper->redirector('index');
+	           $this->_helper->redirector('index','index','client');
 	       }
 	    }
 	}
@@ -53,16 +53,16 @@ class Client_NoteController extends Zend_Controller_Action {
 	        $typeNote->setId($data["id_type"]);
 	        $typeNote->setName("");
 	         
-	        $typePriority = new Application_Model_TypePriority();
+	        $typePriority = new Application_Model_Priority();
 	        $typePriority->setId($data["id_priority"]);
 	        $typePriority->setName("");
 	         
 	        $note->setTypeNote($typeNote);
-	        $note->setTypePriority($typePriority);
+	        $note->setPriority($typePriority);
 	        //print_r($note);
 	        
 	        if($serviceNote->updateNote($note)){
-	        	$this->_helper->redirector('index');
+	        	$this->_helper->redirector('index','index','client');
 	        }
 	    }else{
 	        $this->view->note = $serviceNote->getNoteById($data["id"]);
@@ -71,12 +71,10 @@ class Client_NoteController extends Zend_Controller_Action {
 	
 	public function deleteAction(){
 	    $serviceNote = new Application_Service_Note();
-	    $this->_helper->layout()->disableLayout();
-	    $this->_helper->viewRenderer->setNoRender(true);
 		$data = $this->getRequest()->getParams();
 		//print_r($data);
-		if($serviceNote->deleteNote($data["id"])){
-			$this->_helper->redirector('index');
+		if($serviceNote->deleteNote($data["idDelete"])){
+			$this->_helper->redirector('index','index','client');
 		}
 	}
 

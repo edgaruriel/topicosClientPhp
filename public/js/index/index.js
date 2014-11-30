@@ -1,10 +1,7 @@
 var idNote;
 function confirmDeleteNote(id, name){
 	idNote = id;
+	$("#idDelete").val(idNote);
 	$("#nameNote").text(name);
 	$("#dialog-delete").modal('show');
-}
-
-function deleteNote(){
-	location.href = 'client/note/delete?id='+idNote;
 }

@@ -41,8 +41,8 @@ class Client_IndexController extends Zend_Controller_Action {
 	    	 
 	    	 //print_r($client);
 	    	 if($serviceClient->updateClient($client)){
-	    	     $session->client->user->userName = $data["userName"];
-	    	     $this->_helper->redirector('profile');
+	    	     //$session->client->user->userName = $data["userName"];
+	    	     $this->_helper->redirector('index');
 	    	 }
 	    }else{
 	        $this->view->client = $serviceClient->getClientByUserName($session->client->getUser()->getUserName());

@@ -6,7 +6,6 @@
  * @author
  * @version 
  */
-require_once '../library/soap/nusoap.php';
 
 class LoginController extends Zend_Controller_Action
 {

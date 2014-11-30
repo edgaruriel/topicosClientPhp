@@ -24,9 +24,13 @@ $this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-datetim
                                 <div class="col-md-3">
                                     <select class="form-control" id="id_type" name="id_type" data-size="10" >
                                     <option value="">Tipo</option>
-                                    <option value="1">Academica</option>
-                                    <option value="2">Trabajo</option>
-                                    <option value="3">Otro</option>
+                                    <?php foreach (Application_Model_TypeNote::$typeNoteArray as $name=>$typeNote):?>
+                                        <?php if($this->note->getTypeNote()->getId() == $typeNote):?>
+                                            <option value="<?php echo $typeNote;?>" selected="selected"><?php echo Application_Model_TypeNote::$typeNoteNameArray[$name]?></option>
+                                        <?php else: ?>
+                                            <option value="<?php echo $typeNote;?>"><?php echo Application_Model_TypeNote::$typeNoteNameArray[$name]?></option>
+                                        <?php endif;?>
+                                    <?php endforeach;?>
                                     </select>
                                 </div>
                     </div>
@@ -35,10 +39,13 @@ $this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-datetim
                       <label for="priority" class="col-md-2 control-label"><span class="required">*</span> Prioridad:</label>
                                 <div class="col-md-3">
                                     <select class="form-control" id="id_priority" name="id_priority" data-size="10" >
-                                    <option value="">Prioridad</option>
-                                    <option value="1">Alta</option>
-                                    <option value="2">Media</option>
-                                    <option value="3">Baja</option>
+                                    <?php foreach (Application_Model_Priority::$typePriorityArray as $name=>$priority):?>
+                                        <?php if($this->note->getPriority()->getId() == $priority):?>
+                                            <option value="<?php echo $priority;?>" selected="selected"><?php echo Application_Model_Priority::$typePriorityNametArray[$name]?></option>
+                                        <?php else: ?>
+                                            <option value="<?php echo $priority;?>"><?php echo Application_Model_Priority::$typePriorityNametArray[$name]?></option>
+                                        <?php endif;?>
+                                    <?php endforeach;?>
                                     </select>
                                 </div>
                     </div>
@@ -46,7 +53,7 @@ $this->headLink()->appendStylesheet($this->baseUrl().'/library/bootstrap-datetim
                     <div class="form-group">
                        <label for="priority" class="col-md-2 control-label"><span class="required">*</span> Comentarios:</label>
                                 <div class="col-md-3">
-                                    <textarea rows="7" cols="60" id="comment" name="comment" placeholder="Comentarios" class="form-control" style="resize: none; border:1px solid #00B7DF;"><?php echo $this->note->getComment();?></textarea>
+                                    <textarea rows="7" cols="60" id="note" name="note" placeholder="Comentarios" class="form-control" style="resize: none; border:1px solid #00B7DF;"><?php echo $this->note->getNote();?></textarea>
                                 </div>
                     </div>
                     

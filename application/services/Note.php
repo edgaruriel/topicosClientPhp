@@ -1,13 +1,15 @@
 <?php
+require_once '../library/soap/nusoap.php';
+
 class Application_Service_Note {
-    public static $WSDL = 'http://localhost:8080/WStopicosClient/services/NoteService?wsdl';
+    public static $WSDL = 'http://localhost:8080/WStopicosNote/services/NoteService?wsdl';
     
     public function createNote(Application_Model_Note $note){
-    
+        $session = new Zend_Session_Namespace('cubilaundry');
     	$cliente = new nusoap_client(Application_Service_Note::$WSDL, true);
-    	$result = $cliente->call("createNote", array("note"=>$note));
+    	$result = $cliente->call("createNote", array("note"=>$note, "idClient"=>$session->client->getId()));
     
-    	if($result['createNoteReturn'] != null){
+    	if($result['createNoteReturn'] != 'false'){
     		return true;
     	}else{
     		return false;
@@ -44,7 +46,7 @@ class Application_Service_Note {
     
     	$note = new Application_Model_Note();
     	$typeNote = new Application_Model_TypeNote();
-    	$typePriority = new Application_Model_TypePriority();
+    	$typePriority = new Application_Model_Priority();
     	
     	$note->createFromArray($result["getOneByIdNoteReturn"]);
     	$auxNote = $result["getOneByIdNoteReturn"];
@@ -53,32 +55,57 @@ class Application_Service_Note {
         $note->setTypeNote($typeNote);
         
         $typePriority->createFromArray($auxNote["priority"]);
-        $note->setTypePriority($typePriority);
+        $note->setPriority($typePriority);
         
         return $note;
     }
     
     public function getAllByIdClient($idClient){
         $notes = array();
+       
     	$cliente = new nusoap_client(Application_Service_Note::$WSDL, true);
     	$all = $cliente->call("getAllOfClientByIdClient", array("id"=>$idClient));
-    
-    	foreach ($all as $result){
-    	    $note = new Application_Model_Note();
-    	    $typeNote = new Application_Model_TypeNote();
-    	    $typePriority = new Application_Model_TypePriority();
-    	    
-    	    $note->createFromArray($result["getOneByIdNoteReturn"]);
-    	    $auxNote = $result["getOneByIdNoteReturn"];
-    	    
-    	    $typeNote->createFromArray($auxNote["typeNote"]);
-    	    $note->setTypeNote($typeNote);
-    	    
-    	    $typePriority->createFromArray($auxNote["priority"]);
-    	    $note->setTypePriority($typePriority);
-    	    array_push($notes, $note);
+    	$noteArray = $all["getAllOfClientByIdClientReturn"];
+        $flag = false;
+    	foreach ($noteArray as $index=>$value){
+    		if(is_array($value)){
+    			$flag = true;
+    		}else{
+    			$flag = false;
+    		}
+    		break;
     	}
-
+    	
+    	if(!$flag){
+    	    $note = new Application_Model_Note();
+    	  
+    	    $typeNote = new Application_Model_TypeNote();
+    	    $typePriority = new Application_Model_Priority();
+    	  
+    	    $note->createFromArray($noteArray);
+    	    $typeNote->createFromArray($noteArray["typeNote"]);
+    	    $note->setTypeNote($typeNote);
+    	  
+    	    $typePriority->createFromArray($noteArray["priority"]);
+     
+    	    $note->setPriority($typePriority);
+    	    array_push($notes, $note);
+    	}else{
+    	    foreach ($noteArray as $result){
+    	    	$note = new Application_Model_Note();
+    	    	$typeNote = new Application_Model_TypeNote();
+    	    	$typePriority = new Application_Model_Priority();
+    	    	 
+    	    	$note->createFromArray($result);
+    	    	$typeNote->createFromArray($result["typeNote"]);
+    	    	$note->setTypeNote($typeNote);
+    	    	 
+    	    	$typePriority->createFromArray($result["priority"]);
+    	    	 
+    	    	$note->setPriority($typePriority);
+    	    	array_push($notes, $note);
+    	    }
+    	}
     	return $notes;
     }
     

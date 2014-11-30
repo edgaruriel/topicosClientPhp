@@ -3,14 +3,13 @@
 class Application_Model_Note extends Application_Model_Abstract
 {
     
-    public $id;
+    public $id = 0;
     public $title;
-    public $comment;
+    public $note;
     public $date;
     
     public $typeNote;
-    public $typePriority;
-    
+    public $priority;
     
 	/**
 	 * @return the $id
@@ -27,10 +26,10 @@ class Application_Model_Note extends Application_Model_Abstract
 	}
 
 	/**
-	 * @return the $comment
+	 * @return the $note
 	 */
-	public function getComment() {
-		return $this->comment;
+	public function getNote() {
+		return $this->note;
 	}
 
 	/**
@@ -48,14 +47,14 @@ class Application_Model_Note extends Application_Model_Abstract
 	}
 
 	/**
-	 * @return the $typePriority
+	 * @return the $priority
 	 */
-	public function getTypePriority() {
-		return $this->typePriority;
+	public function getPriority() {
+		return $this->priority;
 	}
 
 	/**
-	 * @param field_type $id
+	 * @param number $id
 	 */
 	public function setId($id) {
 		$this->id = $id;
@@ -69,10 +68,10 @@ class Application_Model_Note extends Application_Model_Abstract
 	}
 
 	/**
-	 * @param field_type $comment
+	 * @param field_type $note
 	 */
-	public function setComment($comment) {
-		$this->comment = $comment;
+	public function setNote($note) {
+		$this->note = $note;
 	}
 
 	/**
@@ -90,13 +89,14 @@ class Application_Model_Note extends Application_Model_Abstract
 	}
 
 	/**
-	 * @param field_type $typePriority
+	 * @param field_type $priority
 	 */
-	public function setTypePriority($typePriority) {
-		$this->typePriority = $typePriority;
+	public function setPriority($priority) {
+		$this->priority = $priority;
 	}
 
     
+	
     
 
 }

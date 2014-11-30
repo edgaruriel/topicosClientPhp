@@ -1,4 +1,6 @@
 <?php
+require_once '../library/soap/nusoap.php';
+
 class Application_Service_Login {
     public static $WSDL = 'http://localhost:8080/WStopicosLogin/services/Login?wsdl';
     

@@ -32,7 +32,7 @@ function formatDate($date){
     						</div>
     						<div class="[ info-card-detail ]">
     							<!-- Description -->
-    							<p><?php echo $note->getComment();?></p>
+    							<p><?php echo $note->getNote();?></p>
     						      <a onclick="confirmDeleteNote(<?php echo $note->getId();?>,'<?php echo $note->getTitle();?>')" class="btn btn-default pull-right" style="margin-right: 10px;">Eliminar</a>
     						      <a href="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'edit','id'=>$note->getId()));?>" class="btn btn-default pull-right" style="margin-right: 10px;">Editar</a>
     						</div>
@@ -53,10 +53,14 @@ function formatDate($date){
 	      <div class="modal-body">
 	        <p>&iquest;Esta seguro que desea eliminar la nota <b id="nameNote"></b>?</p>
 	      </div>
+	      <form action="<?php echo $this->url(array('module'=>'client', 'controller' => 'note', 'action' => 'delete'),null,true);?>" method="post" class="form-horizontal" role="form">
+	      <input type="hidden" id="idDelete" name="idDelete" value=""/>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	        <button type="button" onclick="deleteNote()" class="btn btn-primary">Aceptar</button>
+	        <button type="submit" class="btn btn-primary">Aceptar</button>
 	      </div>
+	      </form>
+	      
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->

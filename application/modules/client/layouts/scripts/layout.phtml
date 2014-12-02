@@ -45,7 +45,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li>
                     <a href="<?php echo $this->url(array('module' => 'client','controller' => 'index', 'action' => 'profile'), null, true);?>">
-                        <?php echo '<i class="fa fa-1x fa-user" style="color: white;"></i>&nbsp;<b>Bienvenido: Eddie</b> ';?>
+                    <?php $session = new Zend_Session_Namespace('cubilaundry');?>
+                        <?php echo '<i class="fa fa-1x fa-user" style="color: white;"></i>&nbsp;<b>Bienvenido:'.$session->client->getName().' '.$session->client->getLastName().'</b> ';?>
                     </a>
              </li>
             <li><a href="<?php echo $this->url(array('module' => 'default','controller' => 'login', 'action' => 'logout'), null, true);?>"><i class="glyphicon glyphicon-lock"></i> Salir</a></li>

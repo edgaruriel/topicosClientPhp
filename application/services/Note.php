@@ -61,51 +61,56 @@ class Application_Service_Note {
     }
     
     public function getAllByIdClient($idClient){
+         
         $notes = array();
        
     	$cliente = new nusoap_client(Application_Service_Note::$WSDL, true);
     	$all = $cliente->call("getAllOfClientByIdClient", array("id"=>$idClient));
     	$noteArray = $all["getAllOfClientByIdClientReturn"];
         $flag = false;
-    	foreach ($noteArray as $index=>$value){
-    		if(is_array($value)){
-    			$flag = true;
-    		}else{
-    			$flag = false;
-    		}
-    		break;
-    	}
-    	
-    	if(!$flag){
-    	    $note = new Application_Model_Note();
-    	  
-    	    $typeNote = new Application_Model_TypeNote();
-    	    $typePriority = new Application_Model_Priority();
-    	  
-    	    $note->createFromArray($noteArray);
-    	    $typeNote->createFromArray($noteArray["typeNote"]);
-    	    $note->setTypeNote($typeNote);
-    	  
-    	    $typePriority->createFromArray($noteArray["priority"]);
-     
-    	    $note->setPriority($typePriority);
-    	    array_push($notes, $note);
-    	}else{
-    	    foreach ($noteArray as $result){
-    	    	$note = new Application_Model_Note();
-    	    	$typeNote = new Application_Model_TypeNote();
-    	    	$typePriority = new Application_Model_Priority();
-    	    	 
-    	    	$note->createFromArray($result);
-    	    	$typeNote->createFromArray($result["typeNote"]);
-    	    	$note->setTypeNote($typeNote);
-    	    	 
-    	    	$typePriority->createFromArray($result["priority"]);
-    	    	 
-    	    	$note->setPriority($typePriority);
-    	    	array_push($notes, $note);
-    	    }
-    	}
+
+        if($noteArray != null){
+            foreach ($noteArray as $index=>$value){
+            	if(is_array($value)){
+            		$flag = true;
+            	}else{
+            		$flag = false;
+            	}
+            	break;
+            }
+             
+            if(!$flag){
+            	$note = new Application_Model_Note();
+            	 
+            	$typeNote = new Application_Model_TypeNote();
+            	$typePriority = new Application_Model_Priority();
+            	 
+            	$note->createFromArray($noteArray);
+            	$typeNote->createFromArray($noteArray["typeNote"]);
+            	$note->setTypeNote($typeNote);
+            	 
+            	$typePriority->createFromArray($noteArray["priority"]);
+            	 
+            	$note->setPriority($typePriority);
+            	array_push($notes, $note);
+            }else{
+            	foreach ($noteArray as $result){
+            		$note = new Application_Model_Note();
+            		$typeNote = new Application_Model_TypeNote();
+            		$typePriority = new Application_Model_Priority();
+            		 
+            		$note->createFromArray($result);
+            		$typeNote->createFromArray($result["typeNote"]);
+            		$note->setTypeNote($typeNote);
+            		 
+            		$typePriority->createFromArray($result["priority"]);
+            		 
+            		$note->setPriority($typePriority);
+            		array_push($notes, $note);
+            	}
+            }
+        } 
+        
     	return $notes;
     }
     

@@ -23,7 +23,13 @@ function formatDate($date){
 		      <?php foreach ($this->notes as $note):?>
 		          <div class="[ col-sm-6 col-md-4 ]">
     				<div class="[ info-card ]">
-    					<img style="width: 100%" src="<?php echo $this->baseUrl('/img/nota.jpg');?>" />
+    				    <?php if($note->getPriority()->getId()==Application_Model_Priority::$typePriorityArray["ALTA"]):?>
+    				        <img style="width: 100%" src="<?php echo $this->baseUrl('/img/urgente.jpg');?>" />
+    				    <?php elseif ($note->getPriority()->getId()==Application_Model_Priority::$typePriorityArray["MEDIA"]):?>
+    				        <img style="width: 100%" src="<?php echo $this->baseUrl('/img/importante.jpg');?>" />
+    				    <?php elseif($note->getPriority()->getId()==Application_Model_Priority::$typePriorityArray["BAJA"]):?>
+    				        <img style="width: 100%" src="<?php echo $this->baseUrl('/img/recordatorio.jpg');?>" />
+    				    <?php endif;?>
     					<div class="[ info-card-details ] animate">
     						<div class="[ info-card-header ]">
     							<h1> <?php echo $note->getTitle();?> </h1>
